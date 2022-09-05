@@ -1,10 +1,13 @@
 import tkinter as tk
 import tkinter.font as tkFont
+from tkinter import PhotoImage
+from turtle import color
+#import datos as dt
 
 class App:
     def __init__(self, root):
         #setting title
-        root.title("undefined")
+        root.title("Test Vocacional")
         #setting window size
         width=900
         height=600
@@ -16,60 +19,62 @@ class App:
 
         pregunta=tk.Label(root)
         pregunta["anchor"] = "center"
-        ft = tkFont.Font(family='Times',size=46)
-        pregunta["font"] = ft
+        ft = tkFont.Font(family='default',size=25)
+        pregunta["font"]=ft
         pregunta["fg"] = "#333333"
         pregunta["justify"] = "center"
-        pregunta["text"] = "label"
-        pregunta.place(x=20,y=20,width=863,height=127)
+        pregunta["text"] = "Aquí se debería mostrar la pregunta"
+        pregunta.place(x=30,y=0,width=863,height=127)
 
         noMeInteresa=tk.Button(root)
         noMeInteresa["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        noMeInteresa["font"] = ft
+        ft = tkFont.Font(family='default',size=15)
+        noMeInteresa["font"]=ft
         noMeInteresa["fg"] = "#000000"
         noMeInteresa["justify"] = "center"
-        noMeInteresa["text"] = "Button"
-        noMeInteresa.place(x=30,y=180,width=400,height=250)
+        noMeInteresa["bg"]= "SpringGreen2"
+        noMeInteresa["text"] = "Me interesa"
+        noMeInteresa.place(x=30,y=220,width=400,height=100)
         noMeInteresa["command"] = self.noMeInteresa_command
 
         meInteresa=tk.Button(root)
         meInteresa["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        meInteresa["font"] = ft
+        ft = tkFont.Font(family='default',size=15)
+        meInteresa["font"]=ft
         meInteresa["fg"] = "#000000"
         meInteresa["justify"] = "center"
-        meInteresa["text"] = "ButtonButtongcghn"
-        meInteresa.place(x=470,y=180,width=400,height=250)
+        meInteresa["bg"]= "SpringGreen2"
+        meInteresa["text"] = "No me interesa"
+        meInteresa.place(x=470,y=220,width=400,height=100)
         meInteresa["command"] = self.meInteresa_command
 
         atras=tk.Button(root)
         atras["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        atras["font"] = ft
+        ft = tkFont.Font(family='default',size=15)
+        atras["font"]=ft
         atras["fg"] = "#000000"
         atras["justify"] = "center"
-        atras["text"] = "Button"
-        atras.place(x=30,y=500,width=60,height=60)
+        atras["text"] = "Volver"
+        atras.place(x=30,y=450,width=100,height=40)
         atras["command"] = self.atras_command
 
         siguiente=tk.Button(root)
         siguiente["bg"] = "#f0f0f0"
-        ft = tkFont.Font(family='Times',size=10)
-        siguiente["font"] = ft
+        ft = tkFont.Font(family='default',size=15)
+        siguiente["font"]=ft
         siguiente["fg"] = "#000000"
         siguiente["justify"] = "center"
-        siguiente["text"] = "Button"
-        siguiente.place(x=810,y=500,width=60,height=60)
+        siguiente["text"] = "Siguiente"
+        siguiente.place(x=770,y=450,width=100,height=40)
         siguiente["command"] = self.siguiente_command
 
         progreso=tk.Label(root)
-        ft = tkFont.Font(family='Times',size=10)
-        progreso["font"] = ft
+        ft = tkFont.Font(family='default',size=15)
+        progreso["font"]=ft
         progreso["fg"] = "#333333"
         progreso["justify"] = "center"
-        progreso["text"] = "label"
-        progreso.place(x=420,y=520,width=70,height=25)
+        progreso["text"] = "Pregunta X"
+        progreso.place(x=390,y=460,width=120,height=25)
 
     def noMeInteresa_command(self):
         print("command")
