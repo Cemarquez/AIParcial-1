@@ -7,8 +7,13 @@ root.title("Ventana principal")
 root.geometry("400x150")
 
 etiqueta = Label(root,
-                 text="Test para identificación de intereses vocacionales y profesionales").grid(row=0, pady=10, padx=10)
+                 text="¿Usted es bobo?").grid(row=0, pady=10, padx=10)
 
-preguntas = dt.retorno()
-print(preguntas)
-#mainloop()
+
+siInteresa = Button(root, text="Me interesa", width=50).grid(
+    padx=10, pady=10, row=1, column=0, columnspan=2, sticky=E+W)
+noInteresa = Button(root, text="No me interesa", width=50).grid(
+    padx=10, pady=10, row=2, column=0, columnspan=2, sticky=E+W)
+#preguntas = dt.retorno()
+#print(preguntas)
+mainloop()
