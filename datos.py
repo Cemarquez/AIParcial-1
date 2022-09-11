@@ -2,7 +2,7 @@ import pandas
 import xlrd as xl
 
 def retorno():
-    df = pandas.read_excel("Preguntas.xlsx")
+    df = pandas.read_excel("resources/Preguntas.xlsx")
     preguntas = []
 
     for row in df.iterrows():
