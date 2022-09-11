@@ -12,8 +12,7 @@ root = tk.Tk()
 root.title("Test Vocacional")
 preguntas = dt.retorno()
 respuestas = {}
-index = 70
-
+index = 76
 
 def noMeInteresa_command():
         global index
@@ -31,6 +30,38 @@ def noMeInteresa_command():
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
                 print("Aqui va el metodo para entregar resultado")
 
+def calcular_resultado():
+        global root
+        global respuestas
+        calculoArea = {1:0, 2:0, 3:0, 4:0, 5:0}
+        split = int(len(preguntas)/5)
+        conR=0
+        con=1
+
+        for clave in respuestas:
+                calculoArea[con] = calculoArea[con] + respuestas[clave] 
+                print(clave, split, con)
+                if clave == split and con<5:
+                        con+=1
+                        split+=int(len(preguntas)/5)
+        
+        for ele in root.winfo_children():
+                 ele.destroy()
+
+        for clave in calculoArea:
+                amigo=0
+
+        pregunta = tk.Label(root)
+        pregunta["anchor"] = "center"
+        ft = tkFont.Font(family='default', size=25)
+        pregunta["font"] = ft
+        pregunta["fg"] = "#333333"
+        pregunta["justify"] = "center"
+        imgProfesiones = PhotoImage(file="profesiones.png")
+        pregunta["image"] = imgProfesiones
+        pregunta["wraplength"] = 800
+        pregunta.place(x=30, y=0, width=863, height=200)
+
 
 def meInteresa_command():
         global index
@@ -46,7 +77,7 @@ def meInteresa_command():
         else:
                 pregunta["text"] = "Final del Test Vocacional"
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
-                print("Aqui va el metodo para entregar resultado")
+                print(calcular_resultado())
 
 
 def atras_command():
@@ -94,7 +125,8 @@ pregunta["font"] = ft
 pregunta["fg"] = "#333333"
 pregunta["justify"] = "center"
 pregunta["text"] = preguntas[index]
-pregunta.place(x=30, y=0, width=863, height=127)
+pregunta["wraplength"] = 800
+pregunta.place(x=30, y=0, width=863, height=200)
 
 noMeInteresa = tk.Button(root)
 noMeInteresa["bg"] = "#f0f0f0"
