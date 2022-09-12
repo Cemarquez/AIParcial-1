@@ -6,7 +6,7 @@ import datos as dt
 import ctypes  
 from tkinter import PhotoImage
 from PIL import Image,ImageTk
-
+from tkinter import ttk
 
 root = tk.Tk()
 root.title("Test Vocacional")
@@ -25,10 +25,12 @@ def noMeInteresa_command():
         if index < len(preguntas):
                 pregunta["text"] = preguntas[index]
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
+                progress()
         else:
                 pregunta["text"] = "Final del Test Vocacional"
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
                 print("Aqui va el metodo para entregar resultado")
+                calcular_resultado()
 def close():
    #win.destroy()
    root.quit()
@@ -118,6 +120,7 @@ def meInteresa_command():
         if index < len(preguntas):
                 pregunta["text"] = preguntas[index]
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
+                progress()
         else:
                 pregunta["text"] = "Final del Test Vocacional"
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
@@ -133,6 +136,7 @@ def atras_command():
                 index-=1
                 pregunta["text"] = preguntas[index]
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
+                reverse()
         else:
                ctypes.windll.user32.MessageBoxW(0, "Se encuentra en la pregunta 1.", "Error", 0)  
 
@@ -148,6 +152,7 @@ def siguiente_command():
                 index +=1
                 pregunta["text"] = preguntas[index]
                 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
+                progress()
         except:
                 ctypes.windll.user32.MessageBoxW(0, "Por favor responda esta pregunta para continuar.", "Pregunta sin contestar", 0)
         
@@ -231,10 +236,34 @@ progreso["font"] = ft
 progreso["fg"] = "#333333"
 progreso["justify"] = "center"
 progreso["text"] = "Pregunta " + str(index+1) + " / " + str(len(preguntas)+1)
-progreso.place(x=(width/2)-100 , y=460, width=200, height=30)
+progreso.place(x=(width/2)-100 , y=490, width=200, height=30)
 progreso.configure(background='white')
 
 
+
+pb = ttk.Progressbar(
+    root,
+    orient='horizontal',
+    mode='determinate',
+    length=280
+)
+# place the progressbar
+pb.grid(column=0, row=0, columnspan=2, padx=10, pady=20)
+pb.place(x=(width/2)-140, y=460)
+
+# label
+value_label = ttk.Label(root, text="a")
+value_label.grid(column=0, row=1, columnspan=2)
+
+def progress():
+        global pb
+        if pb['value'] < 100:
+                pb['value'] += 1.25
+
+def reverse():
+        global pb
+        if pb['value'] < 100:
+                pb['value'] -= 1.25
 
 
 root.mainloop()
