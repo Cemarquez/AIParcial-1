@@ -51,8 +51,6 @@ def calcular_resultado():
         for ele in root.winfo_children():
                  ele.destroy()
 
-        for clave in calculoArea:
-                amigo=0
         root.configure(background='white')
         width = 900
         height = 700
