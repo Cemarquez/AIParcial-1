@@ -1,5 +1,4 @@
 import pandas
-import xlrd as xl
 
 def retorno():
     df = pandas.read_excel("resources/Preguntas.xlsx")

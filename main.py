@@ -1,10 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from tkinter import PhotoImage
-from turtle import color
 import datos as dt
 import ctypes  
-from tkinter import PhotoImage
 from PIL import Image,ImageTk
 from tkinter import ttk
 
